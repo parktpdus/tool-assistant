@@ -47,13 +47,8 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 # 파일 업로더와 채팅 입력 통합
 uploaded_file = st.file_uploader(
-    "", type=['png', 'jpg', 'jpeg'], accept_multiple_files=False
+    "", type=['png', 'jpg', 'jpeg', 'pdf'], accept_multiple_files=True
 )
-
-current_image = None
-if uploaded_file:
-    current_image = Image.open(uploaded_file)
-    st.image(current_image, width=200)
 
 # 사용자 입력 처리
 if prompt := st.chat_input("메시지를 입력하세요..."):
@@ -75,6 +70,11 @@ if prompt := st.chat_input("메시지를 입력하세요..."):
 
 # 사이드바에 대화 초기화 버튼 추가
 with st.sidebar:
+    current_image = None
+    if uploaded_file:
+        current_image = Image.open(uploaded_file)
+        st.image(current_image, width=200)
+        
     if st.button("대화 지우기", type="primary"):
         st.session_state.messages = []
         st.rerun()
