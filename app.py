@@ -47,7 +47,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 # 파일 업로더와 채팅 입력 통합
 uploaded_file = st.file_uploader(
-    "", type=['png', 'jpg', 'jpeg'], accept_multiple_files=False
+    "", type=['png', 'jpg', 'jpeg', 'pdf'], accept_multiple_files=False
 )
 
 current_image = None
